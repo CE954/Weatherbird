@@ -1,0 +1,36 @@
+{
+  "name": "weather_app",
+  "version": "1.0.0",
+  "description": "This is a simple weather app that can provide the most up-to-date weather  information for any given location as well as the user's current location. The  app will display basic weather data but there will also be an option to display  a more detailed report. The app's background will animate depending on the  current weather.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --watch --mode=development",
+    "build": "webpack --mode=production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CE954/JS-Project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CE954/JS-Project/issues"
+  },
+  "homepage": "https://github.com/CE954/JS-Project#readme",
+  "dependencies": {
+    "@babel/core": "^7.21.3",
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.29.1",
+    "css-loader": "^6.7.3",
+    "mini-css-extract-plugin": "^2.7.5",
+    "regenerator-runtime": "^0.13.11",
+    "sass": "^1.60.0",
+    "sass-loader": "^13.2.2",
+    "webpack": "^5.77.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "browserslist": ["defaults"]
+}
