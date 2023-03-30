@@ -14,3 +14,5 @@ With this weather app, users will be able to:
 - Toggle between using Celsius and Fahrenheit 
 
 ## Wireframes
+![wireframe](https://user-images.githubusercontent.com/114632709/228934974-734df209-9573-4b2e-90ec-73c66479e434.png)
+
