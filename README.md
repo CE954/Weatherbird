@@ -54,5 +54,6 @@ and debug.
 - Thursday Morning: Upload to GitHub. 
 
 ## Bonus features 
+Some additional features that could potentialy be added:
 - Toggle sound effects that correspond to current weather conditions
 - Be able to display two or more locations on the screen at once with a carousel effect
