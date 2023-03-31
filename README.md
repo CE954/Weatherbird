@@ -38,7 +38,7 @@ and main display box (basic weather data). Make sure the user gets correct
 weather info by search or by using the find location button.
 Also, design the dropdown menu (detailed report). 
 
-- Monday: If I haven't already, I will work on animating the transitions from 
+- Monday: If I haven't already, I will start working on animating the transitions from 
 one display box to the next, as well as making sure the dropdown menu animation 
 looks nice. Start working on background animations for different weather 
 conditions. Also, start working on location star/pin feature. Work on carousel 
@@ -54,4 +54,6 @@ and debug.
 - Thursday Morning: Upload to GitHub. 
 
 ## Bonus features 
+Some additional features that could potentialy be added:
 - Toggle sound effects that correspond to current weather conditions
+- Be able to display two or more locations on the screen at once with a carousel effect
