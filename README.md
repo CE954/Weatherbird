@@ -6,7 +6,7 @@ a more detailed report. The app's background will animate depending on the
 current weather. 
 
 ## Functionality & MVPs
-With this weather app, users will be able to: 
+With this weather app (final name TBD), users will be able to: 
 - Get a weather report for their current location through geolocation
 - Search for other locations
 - Toggle between using Celsius and Fahrenheit 
@@ -41,7 +41,8 @@ Also, design the dropdown menu (detailed report).
 - Monday: If I haven't already, I will work on animating the transitions from 
 one display box to the next, as well as making sure the dropdown menu animation 
 looks nice. Start working on background animations for different weather 
-conditions. Also, start working on location star/pin feature. 
+conditions. Also, start working on location star/pin feature. Work on carousel 
+menu in dropdown menu and setup up modal menu.
 
 - Tuesday: Continue working on CSS animations, styling and transitions, making 
 sure the site is visually pleasing. Make adjustments to ensure that the site is
