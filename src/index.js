@@ -33,10 +33,11 @@ window.displayWeather = displayWeather;
 
 let searchForm = document.querySelector(".search");
 
-searchForm.addEventListener("submit", function() {
-    // event.preventDefault();
+searchForm.addEventListener("submit", function(event) {
+    event.preventDefault();
     let input = document.querySelector(".search-bar").value;
     fetchWeather(input);
+    document.querySelector(".search-bar").value = "";
 })
 
 
