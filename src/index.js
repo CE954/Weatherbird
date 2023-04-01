@@ -31,6 +31,14 @@ console.log("Hello World!");
 window.fetchWeather = fetchWeather;
 window.displayWeather = displayWeather;
 
+let searchForm = document.querySelector(".search");
+
+searchForm.addEventListener("submit", function() {
+    // event.preventDefault();
+    let input = document.querySelector(".search-bar").value;
+    fetchWeather(input);
+})
+
 
 // Error handling example
 // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${id}`)

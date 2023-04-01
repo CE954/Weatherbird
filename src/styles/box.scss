@@ -11,11 +11,8 @@ body {
 .card {
     // width: 800px;
     height: 350px;
-    // background: white;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     display: flex;
     justify-content: center;
-    // align-items: center;
     flex-direction: column;
     background: rgba(255, 255, 255, 0.75);
     box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.37);
@@ -26,32 +23,12 @@ body {
     width: 100%;
     max-width: 500px;
     margin: 1em;
+    // position: absolute;
     
-    .tooltip {
-        position: relative;
-        display: inline-block;
-    }
-
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 120px;
-            background-color: black;
-            color: #fff;
-            text-align: center;
-            padding: 5px 0;
-            border-radius: 6px;
-    
-            /* Position the tooltip text - see examples below! */
-            position: absolute;
-            z-index: 1;
-        }
-
-                .tooltip:hover .tooltiptext {
-                    visibility: visible;
-                }
-
+   
     .weather {
         margin: 20px;
+        // position: absolute;
     
        h2 {
             font-size: 2rem;
@@ -68,6 +45,13 @@ body {
             font-size: 1.2rem;
             margin: 10px 0;
        }
+
+        .image {
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            // position: absolute;
+        }
     }
 
     .search {
