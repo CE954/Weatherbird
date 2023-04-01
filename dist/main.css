@@ -215,5 +215,10 @@ body {
   justify-content: flex-end;
   align-content: flex-start;
   position: absolute;
-  right: 100px;
+  right: 5px;
+  top: 60px;
+}
+.card .image img {
+  width: 250px;
+  height: 250px;
 }
