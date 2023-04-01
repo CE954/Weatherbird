@@ -28,6 +28,7 @@ body {
    
     .weather {
         margin: 20px;
+        width: 60%;
         // position: absolute;
     
        h2 {
@@ -84,5 +85,13 @@ body {
             cursor: pointer;
             background: rgb(187, 187, 187);
         }
+    }
+
+    .image {
+        display: flex;
+        justify-content: flex-end;
+        align-content: flex-start;
+        position: absolute;
+        right: 100px;
     }
 }

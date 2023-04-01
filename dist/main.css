@@ -163,6 +163,7 @@ body {
 }
 .card .weather {
   margin: 20px;
+  width: 60%;
 }
 .card .weather h2 {
   font-size: 2rem;
@@ -208,4 +209,11 @@ body {
 .card .search button:hover {
   cursor: pointer;
   background: rgb(187, 187, 187);
+}
+.card .image {
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-start;
+  position: absolute;
+  right: 100px;
 }

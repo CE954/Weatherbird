@@ -1,3 +1,5 @@
+// import getIcon from './scripts/icon.js';
+
 //API call test
 let key = "62b8f696194b27ae3d38708afeb4c3cc";
 
@@ -40,6 +42,10 @@ searchForm.addEventListener("submit", function(event) {
     document.querySelector(".search-bar").value = "";
 })
 
+// let test = document.querySelector(".image");
+// let image = document.createElement("img");
+// image.src = '/images/day.svg';
+// test.appendChild(image)
 
 // Error handling example
 // fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${id}`)
