@@ -141,10 +141,17 @@ body {
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
-  height: 1400px;
+  height: 500px;
   margin: 0;
   background: #efecff;
   font-family: "Poppins", sans-serif;
+}
+
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background: url(/src/images/SeaOfClouds-20s-1419px.svg);
 }
 
 .card {
@@ -284,5 +291,7 @@ body {
   max-width: 900px;
   margin: 1em;
   bottom: 1%;
+  scale: 0;
+  opacity: 0;
   display: none;
 }

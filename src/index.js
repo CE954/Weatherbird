@@ -13,7 +13,10 @@ function fetchWeather(city) {
             document.querySelector('.card').style.height = '350px';
             document.querySelector('.search-bar').style.border = '1px solid #ccc';
             document.querySelector('.search-bar').classList.remove('shake');
+            document.querySelector('#body').style.height = '1400px';
             displayWeather(data); 
+            document.querySelector('.details').classList.add('fadeIn');
+            document.querySelector('.details').style.display = "block";
         } else {
             document.querySelector('.search-bar').classList.add('shake');
             document.querySelector('.search-bar').style.border = '1px solid #cc0505';
@@ -27,6 +30,7 @@ function displayWeather(data) {
     const { speed } = data.wind;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
+    const { country } = data.sys;
     document.querySelector('.location').innerText = name;
     document.querySelector(".temp").innerText = Math.round(temp) + "°F";
     document.querySelector(".description").innerText = capitalize(description);
