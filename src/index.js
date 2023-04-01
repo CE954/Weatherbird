@@ -6,15 +6,27 @@ let key = "62b8f696194b27ae3d38708afeb4c3cc";
 function fetchWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
     .then(response => response.json())
-    .then(data => displayWeather(data))
+    .then(data => { 
+        if (data.cod !== '404') { 
+            document.querySelector('.weather').classList.add('fadeIn');
+            document.querySelector('.image img').classList.add('fadeIn');
+            document.querySelector('.card').style.height = '350px';
+            document.querySelector('.search-bar').style.border = '1px solid #ccc';
+            document.querySelector('.search-bar').classList.remove('shake');
+            displayWeather(data); 
+        } else {
+            document.querySelector('.search-bar').classList.add('shake');
+            document.querySelector('.search-bar').style.border = '1px solid #cc0505';
+            document.querySelector('.search-bar').placeholder = "City not found";
+        }
+     })
 }
 
 function displayWeather(data) {
     const { name } = data;
+    const { speed } = data.wind;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
-    const { speed } = data.wind;
-    // console.log(name, icon, description, temp, humidity, speed);
     document.querySelector('.location').innerText = name;
     document.querySelector(".temp").innerText = Math.round(temp) + "°F";
     document.querySelector(".description").innerText = capitalize(description);
@@ -22,8 +34,10 @@ function displayWeather(data) {
     document.querySelector(".wind").innerText = `Wind Speed: ${speed} MPH`;
     if (icon.includes("d")) {
         document.querySelector(".image img").src = getDayIcon(icon);
+        document.querySelector(".image img").style.display = "block"
     } else {
         document.querySelector(".image img").src = getNightIcon(icon);
+        document.querySelector(".image img").style.display = "block"
     }
 }
 
@@ -43,9 +57,11 @@ let searchForm = document.querySelector(".search");
 
 searchForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    let input = document.querySelector(".search-bar").value;
+    const input = document.querySelector(".search-bar").value;
+    if (input === "") return;
     fetchWeather(input);
     document.querySelector(".search-bar").value = "";
+    document.querySelector('.search-bar').placeholder = "Enter a location";
 })
 
 // Get icons
@@ -94,6 +110,9 @@ function getNightIcon(icon) {
             return "src/images/cloudy.svg";
     }
 }
+
+//transition 
+const card = document.querySelector(".card");
 
 // testing
 // document.querySelector(".image img").src = "src/images/day.svg"

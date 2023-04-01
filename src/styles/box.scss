@@ -1,8 +1,9 @@
 body {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    height: 100vh;
+    flex-direction: column;
+    height: 1400px;
     margin: 0;
     background: #efecff;
     font-family: 'Poppins', sans-serif;
@@ -10,7 +11,7 @@ body {
 
 .card {
     // width: 800px;
-    height: 350px;
+    height: 80px;
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -22,19 +23,22 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.18);
     width: 100%;
     max-width: 500px;
-    margin: 1em;
-    // position: absolute;
+    margin: 200px 0;
+    overflow: hidden;
+    transition: ease-out 0.6s;
     
    
     .weather {
-        margin: 20px;
+        margin: 20px 0px 20px 35px;
         width: 60%;
-        // position: absolute;
+        scale: 0;
+        opacity: 0;
+
     
        h2 {
             font-size: 2rem;
             font-weight: bold;
-            margin: 10px 0;
+            margin: 40px 0px 0px 0px;
        }
 
        h1 {
@@ -51,18 +55,21 @@ body {
             display: flex;
             justify-content: center;
             align-content: center;
-            // position: absolute;
         }
     }
 
     .search {
         display: flex;
         justify-content: center;
-        // align-items: center;
-        margin: 10px;
+        align-items: center;
+        position: absolute;
+        top: 0.5%;
+        height: 70px;
+        border-radius: 24px;
+        width: 100%;
     
         input {
-            width: 70%;
+            width: 300px;
             height: 40px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -70,6 +77,10 @@ body {
             font-size: 1.2rem;
             font-family: 'Poppins', sans-serif;
             margin-top: 5px;
+        }
+
+        input:focus {
+            outline: none;
         }
     
         button {
@@ -99,7 +110,33 @@ body {
         img {
             width: 250px;
             height: 250px;
+            display: none;
+            scale: 0;
+            opacity: 0;
         }
     }
 
+}
+
+.fadeIn {
+    animation: 0.5s fadeIn forwards;
+    animation-delay: 0.3s;
+}
+
+.shake {
+    animation: 0.10s shake 3;
+}
+
+@keyframes fadeIn {
+    to {
+        scale: 1;
+        opacity: 1;
+    }
+}
+
+@keyframes shake {
+    0% { translate: 0;}
+    25% { translate: 7px 0;}
+    75% { translate: -7px 0;}
+    100% { translate: 0;}
 }
