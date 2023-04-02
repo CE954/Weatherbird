@@ -1,4 +1,4 @@
-// import getDayIcon from './scripts/icon.js';
+import { getDayIcon, getNightIcon } from "./scripts/icon.js";
 
 let key = "62b8f696194b27ae3d38708afeb4c3cc";
 
@@ -59,8 +59,6 @@ function capitalize(string) {
     return newSent.join(" ");
 }
 
-console.log("Hello World!");
-
 window.fetchWeather = fetchWeather;
 window.displayWeather = displayWeather;
 
@@ -76,52 +74,6 @@ searchForm.addEventListener("submit", function(event) {
     loader.style.display = "none";
 })
 
-// Get icons
-function getDayIcon(icon) {
-    switch (icon) {
-        case "01d":
-            return "src/images/day.svg";
-        case "02d":
-            return "src/images/cloudy-day-1.svg";
-        case "03d":
-            return "src/images/cloudy-day-2.svg";
-        case "04d":
-            return "src/images/cloudy.svg";
-        case "09d":
-            return "src/images/rainy-4.svg";
-        case "10d":
-            return "src/images/rainy-6.svg";
-        case "11d":
-            return "src/images/thunder.svg";
-        case "13d":
-            return "src/images/snowy-6.svg";
-        case "50d":
-            return "src/images/cloudy.svg";
-    }
-}
-
-function getNightIcon(icon) {
-    switch (icon) {
-        case "01n":
-            return "src/images/night.svg";
-        case "02n":
-            return "src/images/cloudy-night-1.svg";
-        case "03n":
-            return "src/images/cloudy-night-1.svg";
-        case "04n":
-            return "src/images/cloudy-night-1.svg";
-        case "09n":
-            return "src/images/rainy-4.svg";
-        case "10n":
-            return "src/images/rainy-6.svg";
-        case "11n":
-            return "src/images/thunder.svg";
-        case "13n":
-            return "src/images/snowy-6.svg";
-        case "50n":
-            return "src/images/cloudy.svg";
-    }
-}
 
 // Geolocation
 const options = {
@@ -165,3 +117,10 @@ geoSearch.addEventListener('click', function(event) {
     navigator.geolocation.getCurrentPosition(success, error, options);
 });
 
+// Scroll to details
+let detailsButton = document.querySelector('.details-button');
+
+detailsButton.addEventListener('click', function(event) {
+    event.preventDefault();
+    document.querySelector('.details').scrollIntoView({behavior: 'smooth'});
+})

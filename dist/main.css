@@ -151,7 +151,7 @@ body {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: url(/src/images/NightOfClouds.svg);
+  background: url(/src/images/SeaOfClouds.svg);
 }
 
 .card {
@@ -184,7 +184,7 @@ body {
 }
 .card .weather h1 {
   font-size: 3rem;
-  margin: 30px 0;
+  margin: 25px 0;
 }
 .card .weather p {
   font-size: 1.2rem;
@@ -194,6 +194,17 @@ body {
   display: flex;
   justify-content: center;
   align-content: center;
+}
+.card .weather .details-button {
+  font-size: 1em;
+  color: #8e8e8e;
+  transition: 0.5s;
+  z-index: 1;
+  width: fit-content;
+}
+.card .weather .details-button:hover {
+  cursor: pointer;
+  color: rgb(160, 5, 174);
 }
 .card .search {
   display: flex;
@@ -214,6 +225,7 @@ body {
   font-size: 1.2rem;
   font-family: "Poppins", sans-serif;
   margin-top: 5px;
+  z-index: 1;
 }
 .card .search input:focus {
   outline: none;
@@ -252,7 +264,7 @@ body {
   height: 28px;
   border-radius: 50%;
   position: absolute;
-  border-top: 3px solid #FFF;
+  border-top: 3px solid rgb(160, 5, 174);
   border-right: 3px solid transparent;
   animation: rotation 1s linear infinite;
   top: 23px;
@@ -278,7 +290,7 @@ body {
 
 #geo-search:hover {
   cursor: pointer;
-  background: rgb(187, 187, 187);
+  background: rgb(160, 5, 174);
 }
 
 .fadeIn {
