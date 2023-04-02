@@ -121,17 +121,41 @@ function getNightIcon(icon) {
 }
 
 // Geolocation
-geoSearch.addEventListener('click', function(event) {
-   searchBar.placeholder = "Finding location...";
-   navigator.geolocation.getCurrentPosition(function(position) {
-         let lat = position.coords.latitude;
-         let lon = position.coords.longitude;
-         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
-         .then(response => response.json())
-         .then(data => {
+const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+}
+
+function success(position) {
+    let lat = position.coords.latitude;
+    let lon = position.coords.longitude;
+    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
+        .then(response => response.json())
+        .then(data => {
             searchBar.placeholder = "Enter a location";
             return fetchWeather(data.name);
-         })
-   })
+        });
+}
+
+function error(err) { 
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+    if (err.code === 1) {
+        searchBar.classList.add('shake');
+        searchBar.style.border = '1px solid #cc0505';
+        searchBar.placeholder = "Location access denied";
+    } else if (err.code === 2) {
+        searchBar.placeholder = "Can't find location";
+        searchBar.classList.add('shake');
+        searchBar.style.border = '1px solid #cc0505';
+    } else if (err.code === 3) {
+        searchBar.placeholder = "Location request timed out";
+        searchBar.classList.add('shake');
+        searchBar.style.border = '1px solid #cc0505';
+    }
+}
+
+geoSearch.addEventListener('click', function(event) {
+    searchBar.placeholder = "Finding location...";
+    navigator.geolocation.getCurrentPosition(success, error, options);
 });
 
