@@ -17,6 +17,7 @@ function fetchWeather(city) {
             displayWeather(data); 
             document.querySelector('.details').classList.add('fadeIn');
             document.querySelector('.details').style.display = "block";
+            document.querySelector('#geo-search').style.marginTop = "4px";
         } else {
             document.querySelector('.search-bar').classList.add('shake');
             document.querySelector('.search-bar').style.border = '1px solid #cc0505';
@@ -116,7 +117,23 @@ function getNightIcon(icon) {
 }
 
 //transition 
-const card = document.querySelector(".card");
+
+
+// Geolocation
+let geoSearch = document.querySelector('#geo-search')
+geoSearch.addEventListener('click', function(event) {
+   document.querySelector('.search-bar').placeholder = "Finding location...";
+   navigator.geolocation.getCurrentPosition(function(position) {
+         let lat = position.coords.latitude;
+         let lon = position.coords.longitude;
+         fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
+         .then(response => response.json())
+         .then(data => {
+            document.querySelector('.search-bar').placeholder = "Enter a location";
+            return fetchWeather(data.name);
+         })
+   })
+});
 
 // testing
 // document.querySelector(".image img").src = "src/images/day.svg"
