@@ -7,6 +7,7 @@ const moreDetails = document.querySelector(".details");
 const geoSearch = document.querySelector("#geo-search");
 const picture = document.querySelector(".image img");
 const searchForm = document.querySelector(".search");
+const loader = document.querySelector(".loader");
 
 // API calls
 function fetchWeather(city) {
@@ -66,11 +67,13 @@ window.displayWeather = displayWeather;
 // Search button event listener
 searchForm.addEventListener("submit", function(event) {
     event.preventDefault();
+    loader.style.display = "block";
     let input = document.querySelector(".search-bar").value;
     if (searchBar.value === "") return;
     fetchWeather(input);
     searchBar.value = "";
     searchBar.placeholder = "Enter a location";
+    loader.style.display = "none";
 })
 
 // Get icons
@@ -133,12 +136,14 @@ function success(position) {
         .then(response => response.json())
         .then(data => {
             searchBar.placeholder = "Enter a location";
+            loader.style.display = "none";
             return fetchWeather(data.name);
         });
 }
 
 function error(err) { 
     console.warn(`ERROR(${err.code}): ${err.message}`);
+    loader.style.display = "none";
     if (err.code === 1) {
         searchBar.classList.add('shake');
         searchBar.style.border = '1px solid #cc0505';
@@ -156,6 +161,7 @@ function error(err) {
 
 geoSearch.addEventListener('click', function(event) {
     searchBar.placeholder = "Finding location...";
+    loader.style.display = "block";
     navigator.geolocation.getCurrentPosition(success, error, options);
 });
 

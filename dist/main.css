@@ -151,7 +151,7 @@ body {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: url(/src/images/SeaOfClouds-20s-1419px.svg);
+  background: url(/src/images/NightOfClouds.svg);
 }
 
 .card {
@@ -247,6 +247,19 @@ body {
   scale: 0;
   opacity: 0;
 }
+.card .loader {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  position: absolute;
+  border-top: 3px solid #FFF;
+  border-right: 3px solid transparent;
+  animation: rotation 1s linear infinite;
+  top: 23px;
+  left: 20px;
+  z-index: 1;
+  display: none;
+}
 
 #geo-search {
   position: absolute;
@@ -277,6 +290,14 @@ body {
   animation: 0.1s shake 3;
 }
 
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
 @keyframes fadeIn {
   to {
     scale: 1;
