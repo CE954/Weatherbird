@@ -1,48 +1,54 @@
 // import getDayIcon from './scripts/icon.js';
 
-//API calls
 let key = "62b8f696194b27ae3d38708afeb4c3cc";
 
+const searchBar = document.querySelector(".search-bar");
+const moreDetails = document.querySelector(".details");
+const geoSearch = document.querySelector("#geo-search");
+const picture = document.querySelector(".image img");
+const searchForm = document.querySelector(".search");
+
+// API calls
 function fetchWeather(city) {
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
     .then(response => response.json())
     .then(data => { 
         if (data.cod !== '404') { 
             document.querySelector('.weather').classList.add('fadeIn');
-            document.querySelector('.image img').classList.add('fadeIn');
+            picture.classList.add('fadeIn');
             document.querySelector('.card').style.height = '350px';
-            document.querySelector('.search-bar').style.border = '1px solid #ccc';
-            document.querySelector('.search-bar').classList.remove('shake');
+            searchBar.style.border = '1px solid #ccc';
+            searchBar.classList.remove('shake');
             document.querySelector('#body').style.height = '1400px';
             displayWeather(data); 
-            document.querySelector('.details').classList.add('fadeIn');
-            document.querySelector('.details').style.display = "block";
-            document.querySelector('#geo-search').style.marginTop = "4px";
+            moreDetails.classList.add('fadeIn');
+            moreDetails.style.display = "block";
+            geoSearch.style.marginTop = "4px";
         } else {
-            document.querySelector('.search-bar').classList.add('shake');
-            document.querySelector('.search-bar').style.border = '1px solid #cc0505';
-            document.querySelector('.search-bar').placeholder = "City not found";
+           searchBar.classList.add('shake');
+           searchBar.style.border = '1px solid #cc0505';
+           searchBar.placeholder = "City not found";
         }
      })
-}
+    }
 
 function displayWeather(data) {
     const { name } = data;
     const { speed } = data.wind;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
-    const { country } = data.sys;
+    // const { country } = data.sys;
     document.querySelector('.location').innerText = name;
     document.querySelector(".temp").innerText = Math.round(temp) + "°F";
     document.querySelector(".description").innerText = capitalize(description);
     document.querySelector(".humidity").innerText = `Humidity: ${humidity}%`;
     document.querySelector(".wind").innerText = `Wind Speed: ${speed} MPH`;
     if (icon.includes("d")) {
-        document.querySelector(".image img").src = getDayIcon(icon);
-        document.querySelector(".image img").style.display = "block"
+        picture.src = getDayIcon(icon);
+        picture.style.display = "block"
     } else {
-        document.querySelector(".image img").src = getNightIcon(icon);
-        document.querySelector(".image img").style.display = "block"
+        picture.src = getNightIcon(icon);
+        picture.style.display = "block"
     }
 }
 
@@ -57,16 +63,14 @@ console.log("Hello World!");
 window.fetchWeather = fetchWeather;
 window.displayWeather = displayWeather;
 
-// Search button
-let searchForm = document.querySelector(".search");
-
+// Search button event listener
 searchForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    const input = document.querySelector(".search-bar").value;
-    if (input === "") return;
+    let input = document.querySelector(".search-bar").value;
+    if (searchBar.value === "") return;
     fetchWeather(input);
-    document.querySelector(".search-bar").value = "";
-    document.querySelector('.search-bar').placeholder = "Enter a location";
+    searchBar.value = "";
+    searchBar.placeholder = "Enter a location";
 })
 
 // Get icons
@@ -116,45 +120,18 @@ function getNightIcon(icon) {
     }
 }
 
-//transition 
-
-
 // Geolocation
-let geoSearch = document.querySelector('#geo-search')
 geoSearch.addEventListener('click', function(event) {
-   document.querySelector('.search-bar').placeholder = "Finding location...";
+   searchBar.placeholder = "Finding location...";
    navigator.geolocation.getCurrentPosition(function(position) {
          let lat = position.coords.latitude;
          let lon = position.coords.longitude;
          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
          .then(response => response.json())
          .then(data => {
-            document.querySelector('.search-bar').placeholder = "Enter a location";
+            searchBar.placeholder = "Enter a location";
             return fetchWeather(data.name);
          })
    })
 });
 
-// testing
-// document.querySelector(".image img").src = "src/images/day.svg"
-
-
-// Error handling example
-// fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${id}`)
-//     .then(response => {
-//         if (response.ok) {
-//             return response.json();
-//         } else {
-//             throw new Error(response);
-//         }
-//     })
-//     .then(
-//         data => {
-//             console.log("Success!");
-//             console.log(data);
-//         },
-//         errorResponse => {
-//             console.log("Failure!");
-//             console.log(errorResponse);
-//         }
-//     );
