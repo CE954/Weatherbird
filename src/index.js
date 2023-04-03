@@ -1,5 +1,6 @@
 import { getDayIcon, getNightIcon } from "./scripts/icon.js";
 import { openMenu } from "./scripts/burger.js";
+import { pinToggle, favorites, removeFromSidebar, displayPinnedLocations, checkIfFavorited } from "./scripts/favorite.js";
 
 const key = "62b8f696194b27ae3d38708afeb4c3cc";
 
@@ -20,7 +21,6 @@ function fetchWeather(city) {
         if (data.cod !== '404') { 
             document.querySelector('.weather').classList.add('fadeIn');
             picture.classList.add('fadeIn');
-            pin.classList.add('fadeIn');
             document.querySelector('.card').style.height = '350px';
             searchBar.style.border = '1px solid #ccc';
             searchBar.classList.remove('shake');
@@ -30,6 +30,7 @@ function fetchWeather(city) {
             moreDetails.style.display = "block";
             geoSearch.style.marginTop = "4px";
             loader.style.display = "none";
+            pin.classList.add('fadeIn');
         } else {
            searchBar.classList.add('shake');
            searchBar.style.border = '1px solid #cc0505';
@@ -57,6 +58,14 @@ function displayWeather(data) {
         picture.src = getNightIcon(icon);
         picture.style.display = "block"
     }
+
+    if (checkIfFavorited(name)) {
+        pin.classList.remove('unpinned');
+        pin.classList.add('pinned');
+    } else {
+        pin.classList.remove('pinned');
+        pin.classList.add('unpinned');
+    };
 }
 
 function capitalize(string) { 
@@ -134,3 +143,8 @@ const burger = document.querySelector('.burger');
 burger.addEventListener('click', openMenu);
 
 // Pin locations
+// pin.addEventListener('click', function(e) {
+//     console.log(e);
+// });
+
+pin.addEventListener('click', pinToggle);

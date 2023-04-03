@@ -220,7 +220,7 @@ body {
     background-repeat: no-repeat;
     background-size: cover;
     border-radius: 50%;
-    transition: 1s;
+    transition: 0.5s;
     scale: 0;
     opacity: 0;
 }
@@ -228,4 +228,12 @@ body {
 .pin:hover {
     cursor: pointer;
     background-image: url('/src/images/filled-star.svg');
+}
+
+.pinned {
+    background-image: url('/src/images/filled-star.svg');
+}
+
+.unpinned {
+    background-image: url('/src/images/empty-star.svg');
 }
