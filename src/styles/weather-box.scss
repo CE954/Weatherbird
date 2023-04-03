@@ -207,3 +207,25 @@ body {
     75% { translate: -7px 0;}
     100% { translate: 0;}
 }
+
+.pin {
+    background: transparent;
+    border: none;
+    background-image: url('/src/images/empty-star.svg');
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    transition: 1s;
+    scale: 0;
+    opacity: 0;
+}
+
+.pin:hover {
+    cursor: pointer;
+    background-image: url('/src/images/filled-star.svg');
+}

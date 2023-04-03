@@ -9,6 +9,7 @@ const geoSearch = document.querySelector("#geo-search");
 const picture = document.querySelector(".image img");
 const searchForm = document.querySelector(".search");
 const loader = document.querySelector(".loader");
+const pin = document.querySelector(".pin");
 
 // API calls
 function fetchWeather(city) {
@@ -19,6 +20,7 @@ function fetchWeather(city) {
         if (data.cod !== '404') { 
             document.querySelector('.weather').classList.add('fadeIn');
             picture.classList.add('fadeIn');
+            pin.classList.add('fadeIn');
             document.querySelector('.card').style.height = '350px';
             searchBar.style.border = '1px solid #ccc';
             searchBar.classList.remove('shake');
@@ -127,7 +129,8 @@ detailsButton.addEventListener('click', function(event) {
     document.querySelector('.details').scrollIntoView({behavior: 'smooth'});
 })
 
-// Pin locations
+// Burger toggle
 const burger = document.querySelector('.burger');
 burger.addEventListener('click', openMenu);
 
+// Pin locations
