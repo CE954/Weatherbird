@@ -1,6 +1,7 @@
 import { getDayIcon, getNightIcon } from "./scripts/icon.js";
+import { openMenu } from "./scripts/burger.js";
 
-let key = "62b8f696194b27ae3d38708afeb4c3cc";
+const key = "62b8f696194b27ae3d38708afeb4c3cc";
 
 const searchBar = document.querySelector(".search-bar");
 const moreDetails = document.querySelector(".details");
@@ -11,6 +12,7 @@ const loader = document.querySelector(".loader");
 
 // API calls
 function fetchWeather(city) {
+    loader.style.display = "block";
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
     .then(response => response.json())
     .then(data => { 
@@ -25,10 +27,12 @@ function fetchWeather(city) {
             moreDetails.classList.add('fadeIn');
             moreDetails.style.display = "block";
             geoSearch.style.marginTop = "4px";
+            loader.style.display = "none";
         } else {
            searchBar.classList.add('shake');
            searchBar.style.border = '1px solid #cc0505';
            searchBar.placeholder = "City not found";
+           loader.style.display = "none";
         }
      })
     }
@@ -65,13 +69,11 @@ window.displayWeather = displayWeather;
 // Search button event listener
 searchForm.addEventListener("submit", function(event) {
     event.preventDefault();
-    loader.style.display = "block";
     let input = document.querySelector(".search-bar").value;
     if (searchBar.value === "") return;
     fetchWeather(input);
     searchBar.value = "";
     searchBar.placeholder = "Enter a location";
-    loader.style.display = "none";
 })
 
 
@@ -124,3 +126,7 @@ detailsButton.addEventListener('click', function(event) {
     event.preventDefault();
     document.querySelector('.details').scrollIntoView({behavior: 'smooth'});
 })
+
+// Pin locations
+const burger = document.querySelector('.burger');
+burger.addEventListener('click', openMenu);
