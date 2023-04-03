@@ -130,3 +130,4 @@ detailsButton.addEventListener('click', function(event) {
 // Pin locations
 const burger = document.querySelector('.burger');
 burger.addEventListener('click', openMenu);
+
