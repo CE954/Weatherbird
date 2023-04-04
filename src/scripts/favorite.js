@@ -70,11 +70,22 @@ window.favorites = favorites;
 export function removeFromSidebar(location) {
     let className = location.split(" ").join("-");
     let toBeRemoved = document.querySelector(`.${className}`);
-    console.log(toBeRemoved);
+    // console.log(toBeRemoved);
     while (toBeRemoved.firstChild) {
         toBeRemoved.removeChild(toBeRemoved.firstChild);
     }
     toBeRemoved.remove();
+}
+
+// check if favorites box is empty and display a message
+const emptyMessage = document.querySelector('.empty-message');
+
+export function checkIfEmpty() {
+    if (favorites.length === 0) {
+        emptyMessage.style.display = "block";
+    } else {    
+        emptyMessage.style.display = "none";
+    }
 }
 
  // Add a separate funciton to refresh the pinned locations (API call)

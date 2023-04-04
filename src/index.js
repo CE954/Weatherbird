@@ -1,7 +1,8 @@
 import { getDayIcon, getNightIcon, scene } from "./scripts/icon.js";
 import { openMenu } from "./scripts/burger.js";
-import { pinToggle, favorites, removeFromSidebar, displayPinnedLocations, checkIfFavorited } from "./scripts/favorite.js";
+import { pinToggle, checkIfEmpty, checkIfFavorited } from "./scripts/favorite.js";
 import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast } from "./scripts/forecast.js";
+import { currentUnit, unitSwitch, getUnitSymbol } from "./scripts/unitSwitch.js";
 
 const searchBar = document.querySelector(".search-bar");
 const moreDetails = document.querySelector(".details");
@@ -12,10 +13,13 @@ const searchForm = document.querySelector(".search");
 const loader = document.querySelector(".loader");
 const pin = document.querySelector(".pin");
 
+// Display the empty favorites message on startup
+checkIfEmpty();
+
 // API calls
 function fetchWeather(city) {
     loader.style.display = "block";
-    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=${currentUnit}`)
     .then(response => response.json())
     .then(data => { 
         if (data.cod !== '404') { 
@@ -51,7 +55,7 @@ function displayWeather(data) {
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
     document.querySelector('.location').innerText = name;
-    document.querySelector(".temp").innerText = Math.round(temp) + "°F";
+    document.querySelector(".temp").innerText = Math.round(temp) + `${getUnitSymbol()}`;
     document.querySelector(".description").innerText = capitalize(description);
     document.querySelector(".humidity").innerText = `Humidity: ${humidity}%`;
     document.querySelector(".wind").innerText = `Wind Speed: ${speed} MPH`;
@@ -143,3 +147,18 @@ burger.addEventListener('click', openMenu);
 
 // Pin locations
 pin.addEventListener('click', pinToggle);
+pin.addEventListener('click', checkIfEmpty);
+
+// Horizontal scroll for hourly and daily forecast
+const hoursBox = document.querySelector('.hours');
+const daysBox = document.querySelector('.days');
+
+hoursBox.addEventListener('wheel', function(event) {
+    event.preventDefault();
+    hoursBox.scrollLeft += event.deltaY;
+}); 
+
+daysBox.addEventListener('wheel', function(event) {
+    event.preventDefault();
+    daysBox.scrollLeft += event.deltaY;
+});

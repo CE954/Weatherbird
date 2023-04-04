@@ -14,6 +14,12 @@ body {
     font-family: 'Poppins', sans-serif;
 }
 
+body,html {
+    scroll-snap-type: mandatory;
+    scroll-snap-points-y: repeat(100vh);
+    scroll-snap-type: y mandatory;
+}
+
 .background {
     position: fixed;
     height: 100%;

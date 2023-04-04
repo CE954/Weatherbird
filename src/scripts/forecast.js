@@ -1,10 +1,11 @@
 // Function to get 5 day forecast data
 import { getDayIcon, getNightIcon } from './icon.js';
+import {currentUnit, getUnitSymbol} from './unitSwitch.js';
 
 export const key = "62b8f696194b27ae3d38708afeb4c3cc";
 
 export function getForecast(lat, lon) {
-    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=imperial`)
+    fetch(`https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&appid=${key}&units=${currentUnit}`)
     .then(response => response.json())
     .then(data => { 
         if (data.cod !== '404') { 
@@ -42,7 +43,7 @@ export function displayHourlyForecast(data) {
         hour.innerHTML += `
             <div class="hour_time">${conversion}</div>
             <div class="hour_icon"><img src=${src} alt="weather icon"></div>
-            <div class="hour_temp">${temp} °F</div>
+            <div class="hour_temp">${temp} ${getUnitSymbol()}</div>
         `
         hours.appendChild(hour);
     }
@@ -84,7 +85,7 @@ export function displayDailyForecast(data) {
         day.innerHTML += `
             <div class="day_name">${week[dt.getDay()]}</div>
             <div class="day_icon"><img src=${src} alt="weather icon"></div>
-            <div class="day_temp">${minTemp} - ${maxTemp} °F</div>
+            <div class="day_temp">${minTemp} - ${maxTemp} ${getUnitSymbol()}</div>
             <div class="day_desc">${capitalize(data.daily[i].weather[0].description)}</div>
         `
         days.appendChild(day);

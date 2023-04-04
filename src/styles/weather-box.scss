@@ -1,6 +1,5 @@
 
 .card {
-    // width: 800px;
     height: 80px;
     display: flex;
     justify-content: center;
@@ -16,6 +15,7 @@
     margin: 200px 0;
     overflow: hidden;
     transition: ease-out 0.6s;
+    scroll-snap-align: center;
     
    
     .weather {
@@ -49,7 +49,7 @@
 
         .details-button {
             font-size: 1em;
-            color: #8e8e8e;
+            color: rgb(160, 5, 174);
             transition: 0.5s;
             z-index: 1;
             width: fit-content;
@@ -57,7 +57,7 @@
 
         .details-button:hover {
             cursor: pointer;
-            color: rgb(160, 5, 174);
+            // color: rgb(160, 5, 174);
         }
     }
 

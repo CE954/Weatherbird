@@ -11,10 +11,11 @@
     border: 1px solid rgba(255, 255, 255, 0.18);
     width: 100%;
     max-width: 500px;
-    margin: 0 0 220px 0;
+    margin: 20px 0 220px 0;
     scale: 0;
     opacity: 0;
     display: none;
+    scroll-snap-align: center;
 
     .hourly {
         width: 100%;
@@ -71,6 +72,7 @@
     scale: 0;
     opacity: 0;
     display: none;
+    scroll-snap-align: center;
 
     h2  {
         font-family: 'Poppins', sans-serif;
@@ -125,4 +127,11 @@
     font-family: 'Poppins', sans-serif;
     font-size: 0.6em;
     padding: 0.5em;
+}
+
+.details p, 
+.details-2 p {
+    color: rgb(160, 5, 174);
+    position: absolute;
+    bottom: 5%;
 }

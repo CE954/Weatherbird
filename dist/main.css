@@ -152,6 +152,7 @@ table {
   margin: 200px 0;
   overflow: hidden;
   transition: ease-out 0.6s;
+  scroll-snap-align: center;
 }
 .card .weather {
   margin: 20px 0px 20px 35px;
@@ -179,14 +180,13 @@ table {
 }
 .card .weather .details-button {
   font-size: 1em;
-  color: #8e8e8e;
+  color: rgb(160, 5, 174);
   transition: 0.5s;
   z-index: 1;
   width: fit-content;
 }
 .card .weather .details-button:hover {
   cursor: pointer;
-  color: rgb(160, 5, 174);
 }
 .card .search {
   display: flex;
@@ -361,10 +361,11 @@ table {
   border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
   max-width: 500px;
-  margin: 0 0 220px 0;
+  margin: 20px 0 220px 0;
   scale: 0;
   opacity: 0;
   display: none;
+  scroll-snap-align: center;
 }
 .details .hourly {
   width: 100%;
@@ -416,6 +417,7 @@ table {
   scale: 0;
   opacity: 0;
   display: none;
+  scroll-snap-align: center;
 }
 .details-2 h2 {
   font-family: "Poppins", sans-serif;
@@ -465,6 +467,13 @@ table {
   padding: 0.5em;
 }
 
+.details p,
+.details-2 p {
+  color: rgb(160, 5, 174);
+  position: absolute;
+  bottom: 5%;
+}
+
 .favorites-menu {
   z-index: 1;
   top: 0;
@@ -497,13 +506,21 @@ table {
   width: 80%;
   text-align: center;
 }
-.favorites-menu h2 {
+.favorites-menu h2.pins {
   border-bottom: 1px solid rgb(160, 5, 174);
   font-family: "Poppins", sans-serif;
   font-size: 22px;
   width: fit-content;
   position: absolute;
   top: 7.5%;
+}
+.favorites-menu h2.settings {
+  border-bottom: 1px solid rgb(160, 5, 174);
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  width: fit-content;
+  position: absolute;
+  top: 73%;
 }
 
 .burger,
@@ -528,6 +545,17 @@ table {
   translate: 0;
 }
 
+.empty-message {
+  font-family: "Poppins", sans-serif;
+  font-size: 22px;
+  color: rgb(160, 5, 174);
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 30%;
+}
+
 body {
   display: flex;
   justify-content: flex-start;
@@ -537,6 +565,12 @@ body {
   margin: 0;
   background: #efecff;
   font-family: "Poppins", sans-serif;
+}
+
+body, html {
+  scroll-snap-type: mandatory;
+  scroll-snap-points-y: repeat(100vh);
+  scroll-snap-type: y mandatory;
 }
 
 .background {
