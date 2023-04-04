@@ -12,12 +12,14 @@ const picture = document.querySelector(".image img");
 const searchForm = document.querySelector(".search");
 const loader = document.querySelector(".loader");
 const pin = document.querySelector(".pin");
+const refresh = document.querySelector('.refresh');
 
 // Display the empty favorites message on startup
 checkIfEmpty();
 
 // API calls
 function fetchWeather(city) {
+    refresh.style.display = "none";
     loader.style.display = "block";
     fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${key}&units=${currentUnit}`)
     .then(response => response.json())
@@ -38,6 +40,7 @@ function fetchWeather(city) {
             moreDetails2.style.display = "block";
             geoSearch.style.marginTop = "4px";
             loader.style.display = "none";
+            refresh.style.display = "block";
             pin.classList.add('fadeIn');
             getForecast(data.coord.lat, data.coord.lon);
         } else {
@@ -45,6 +48,7 @@ function fetchWeather(city) {
            searchBar.style.border = '1px solid #cc0505';
            searchBar.placeholder = "City not found";
            loader.style.display = "none";
+            refresh.style.display = "block";
         }
      })
     }
@@ -129,6 +133,7 @@ function error(err) {
 
 geoSearch.addEventListener('click', function(event) {
     searchBar.placeholder = "Finding location...";
+    refresh.style.display = "none";
     loader.style.display = "block";
     navigator.geolocation.getCurrentPosition(success, error, options);
 });
@@ -162,3 +167,36 @@ daysBox.addEventListener('wheel', function(event) {
     event.preventDefault();
     daysBox.scrollLeft += event.deltaY;
 });
+
+// Unit toggle
+const unitToggle = document.querySelector('#unit-toggle input');
+unitToggle.addEventListener('change', unitSwitch);
+
+// Refresh button 
+refresh.addEventListener('click', function(event) {
+    event.preventDefault();
+    if (document.querySelector('.location').innerText === "") {
+        searchBar.classList.add('shake');
+        setTimeout(() => {
+            searchBar.classList.remove('shake');
+        }, 500)
+        return;
+    } else {
+        fetchWeather(document.querySelector('.location').innerText);
+    }
+})
+
+// Click on pinned location to fetch weather
+document.addEventListener('click', function(event) {
+    let element = event.target;
+    if (element.classList.contains('pinned-location_name')) {
+        fetchWeather(element.innerText);
+    } else if (element.classList.contains('pinned-location_icon')) {
+        fetchWeather(element.parentElement.className.split("-").join(" "));
+    } else if (element.classList.contains('pinned-location_temp')) {
+       fetchWeather(element.parentElement.className.split("-").join(" "));
+    } else if (element.classList.contains('pinned-icon')) {
+        console.log(element.id.split("-").join(" "));
+        fetchWeather(element.id.split("-").join(" "));
+    }
+})

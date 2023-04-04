@@ -31,6 +31,22 @@
             <p class="empty-message">Click on the star to pin a location!</p>
         </nav>
         <h2 class="settings">Settings</h2>
+        <section> 
+            <div>
+                <p>Dark Mode</p>
+                <label class="switch">
+                    <input type="checkbox">
+                    <div class="slide"></div>
+                </label>
+            </div>
+            <div>
+                <p>Units</p>
+                <label class="switch" id="unit-toggle">
+                    <input type="checkbox">
+                    <div class="slide units"></div>
+                </label>
+            </div>
+        </section>
     </div>
         <div class="card">
             <span class="loader"></span>
@@ -43,6 +59,7 @@
                 </svg>
             </button>
             <form class="search">
+                <i class="fa-solid fa-rotate-right refresh" style="color: #a005ae;"></i> 
                 <input required type="text" class="search-bar" placeholder="Enter a location">
                 <button class="search-button"><svg stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024" height="1.5em" width="1.5em"
                     xmlns="http://www.w3.org/2000/svg">
@@ -79,7 +96,7 @@
 
                 </div>
                  <p>Scroll 
-                    <i class="fa-sharp fa-solid fa-arrow-down fa-beat-fade" style="color: #a005ae;"></i>
+                    <i class="fa-solid fa-up-down fa-beat-fade" style="color: #a005ae;"></i>
                 </p>
             </div>
         </div>
@@ -91,7 +108,7 @@
 
                 </div>
                 <p>Scroll 
-                    <i class="fa-sharp fa-solid fa-arrow-down fa-beat-fade" style="color: #a005ae;"></i>
+                    <i class="fa-solid fa-up-down fa-beat-fade" style="color: #a005ae;"></i>
                 </p>
             </div>
         </div>

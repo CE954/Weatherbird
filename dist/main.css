@@ -144,7 +144,6 @@ table {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(17px);
-  -webkit-backdrop-filter: blur(17px);
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
@@ -348,6 +347,18 @@ table {
   position: absolute;
 }
 
+.fa-rotate-right {
+  font-size: 20px;
+  position: absolute;
+  left: 5.5%;
+  top: 40%;
+  z-index: 2;
+}
+
+.fa-rotate-right:hover {
+  cursor: pointer;
+}
+
 .details {
   height: 350px;
   display: flex;
@@ -356,7 +367,6 @@ table {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(17px);
-  -webkit-backdrop-filter: blur(17px);
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
@@ -408,7 +418,6 @@ table {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(17px);
-  -webkit-backdrop-filter: blur(17px);
   border-radius: 24px;
   border: 1px solid rgba(255, 255, 255, 0.18);
   width: 100%;
@@ -483,7 +492,6 @@ table {
   background: rgba(255, 255, 255, 0.75);
   box-shadow: 0 8px 10px 0 rgba(0, 0, 0, 0.37);
   backdrop-filter: blur(17px);
-  -webkit-backdrop-filter: blur(17px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   translate: -100% 0;
   transition: translate 0.6s ease-out;
@@ -506,6 +514,12 @@ table {
   width: 80%;
   text-align: center;
 }
+.favorites-menu nav > div:hover {
+  cursor: pointer;
+}
+.favorites-menu nav > div:hover div:first-child {
+  color: rgb(160, 5, 174);
+}
 .favorites-menu h2.pins {
   border-bottom: 1px solid rgb(160, 5, 174);
   font-family: "Poppins", sans-serif;
@@ -521,6 +535,20 @@ table {
   width: fit-content;
   position: absolute;
   top: 73%;
+}
+.favorites-menu section {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  bottom: 8%;
+  width: 85%;
+  height: 15%;
+  justify-content: space-evenly;
+  font-size: 18px;
+}
+.favorites-menu section div {
+  display: inline-flex;
+  justify-content: space-between;
 }
 
 .burger,
@@ -554,6 +582,51 @@ table {
   padding: 0;
   position: absolute;
   top: 30%;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 48px;
+  height: 28px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slide {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.5s;
+  border-radius: 34px;
+}
+
+.slide:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+
+.switch input:checked + .slide {
+  background-color: #a005ae;
+}
+
+.switch input:checked + .slide:before {
+  transform: translateX(20px);
 }
 
 body {

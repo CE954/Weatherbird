@@ -53,9 +53,9 @@ export function displayPinnedLocations() {
             pinnedLocation.classList.add(`${className}`);
             pinnedLocation.innerHTML = "";
             pinnedLocation.innerHTML += `
-                <div class="pinned-location__name">${favorites[i][0]}</div>
-                <div class="pinned-location__icon"><img src="${favorites[i][1]}" alt="weather icon"></div>
-                <div class="pinned-location__temp">${favorites[i][2]}</div>
+                <div class="pinned-location_name">${favorites[i][0]}</div>
+                <div class="pinned-location_icon"><img src="${favorites[i][1]}" class="pinned-icon" id="${className}"></div>
+                <div class="pinned-location_temp">${favorites[i][2]}</div>
             `
             document.querySelector('.favorites-menu nav').appendChild(pinnedLocation);
         }
@@ -89,3 +89,5 @@ export function checkIfEmpty() {
 }
 
  // Add a separate funciton to refresh the pinned locations (API call)
+
+ // Function to click on location from pinned locations
