@@ -1,5 +1,42 @@
 @import './styles/reset.scss';
 @import './styles/weather-box.scss';
-@import './styles/details-box.scss';
+@import './styles/details.scss';
 @import './styles/favorites.scss';
 
+body {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    height: 500px;
+    margin: 0;
+    background: #efecff;
+    font-family: 'Poppins', sans-serif;
+}
+
+.background {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: url(/src/images/PartlyCloudy.svg);
+}
+
+.links {
+    display: flex;
+    position: fixed;
+    justify-content: end;
+    align-items: center;
+    top: 20px;
+    right: 20px;
+}
+
+.links a {
+    color: white;
+    margin-right: 30px;
+    font-size: 50px;
+    transition: 0.5s;
+}
+
+.links a:hover {
+    color: rgb(160, 5, 174)
+}

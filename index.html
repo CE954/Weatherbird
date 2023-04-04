@@ -10,10 +10,19 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto:ital,wght@0,400;1,300&display=swap"
         rel="stylesheet">
+    <script src="https://kit.fontawesome.com/fde237b289.js" crossorigin="anonymous"></script>
     <title>Weather App</title>
 </head>
 <body id="body">
     <div class="background">
+    </div>
+    <div class="links"> 
+        <a href="https://github.com/CE954/JS-Project" target="_blank">
+            <i class="fa-brands fa-square-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/christian-espinosa-bb0b47187" target="_blank">
+            <i class="fa-brands fa-linkedin"></i>
+        </a>
     </div>
     <button class="burger"></button>
     <div class="favorites-menu">
@@ -56,10 +65,27 @@
         
         <button class="pin" title="Pin this location">
         </button>
+
+        <div class="hidden-lat"></div>
+        <div class="hidden-lon"></div>
     </div>
 
     <div class="details">
-           
+        <div class="hourly">  
+            <h2>Hourly Forecast</h2>
+            <div class="hours">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="details-2">
+        <div class="daily">
+            <h2>Daily Forecast</h2>
+            <div class="days">
+
+            </div>
+        </div>
     </div>
 </body>
 </html>

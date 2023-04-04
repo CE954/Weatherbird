@@ -1,11 +1,11 @@
-import { getDayIcon, getNightIcon } from "./scripts/icon.js";
+import { getDayIcon, getNightIcon, scene } from "./scripts/icon.js";
 import { openMenu } from "./scripts/burger.js";
 import { pinToggle, favorites, removeFromSidebar, displayPinnedLocations, checkIfFavorited } from "./scripts/favorite.js";
-
-const key = "62b8f696194b27ae3d38708afeb4c3cc";
+import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast } from "./scripts/forecast.js";
 
 const searchBar = document.querySelector(".search-bar");
 const moreDetails = document.querySelector(".details");
+const moreDetails2 = document.querySelector(".details-2");
 const geoSearch = document.querySelector("#geo-search");
 const picture = document.querySelector(".image img");
 const searchForm = document.querySelector(".search");
@@ -19,18 +19,23 @@ function fetchWeather(city) {
     .then(response => response.json())
     .then(data => { 
         if (data.cod !== '404') { 
+            deleteHourlyForecast();
+            deleteForecast();
             document.querySelector('.weather').classList.add('fadeIn');
             picture.classList.add('fadeIn');
             document.querySelector('.card').style.height = '350px';
             searchBar.style.border = '1px solid #ccc';
             searchBar.classList.remove('shake');
-            document.querySelector('#body').style.height = '1400px';
+            document.querySelector('#body').style.height = '3000px';
             displayWeather(data); 
             moreDetails.classList.add('fadeIn');
             moreDetails.style.display = "block";
+            moreDetails2.classList.add('fadeIn');
+            moreDetails2.style.display = "block";
             geoSearch.style.marginTop = "4px";
             loader.style.display = "none";
             pin.classList.add('fadeIn');
+            getForecast(data.coord.lat, data.coord.lon);
         } else {
            searchBar.classList.add('shake');
            searchBar.style.border = '1px solid #cc0505';
@@ -45,7 +50,6 @@ function displayWeather(data) {
     const { speed } = data.wind;
     const { icon, description } = data.weather[0];
     const { temp, humidity } = data.main;
-    // const { country } = data.sys;
     document.querySelector('.location').innerText = name;
     document.querySelector(".temp").innerText = Math.round(temp) + "°F";
     document.querySelector(".description").innerText = capitalize(description);
@@ -68,11 +72,6 @@ function displayWeather(data) {
     };
 }
 
-function capitalize(string) { 
-    let str = string.split(" ");
-    let newSent = str.map(word => word.charAt(0).toUpperCase() + word.slice(1));
-    return newSent.join(" ");
-}
 
 window.fetchWeather = fetchWeather;
 window.displayWeather = displayWeather;
@@ -135,7 +134,7 @@ let detailsButton = document.querySelector('.details-button');
 
 detailsButton.addEventListener('click', function(event) {
     event.preventDefault();
-    document.querySelector('.details').scrollIntoView({behavior: 'smooth'});
+    document.querySelector('.details').scrollIntoView({behavior: 'smooth', block: 'center'});
 })
 
 // Burger toggle
@@ -143,8 +142,4 @@ const burger = document.querySelector('.burger');
 burger.addEventListener('click', openMenu);
 
 // Pin locations
-// pin.addEventListener('click', function(e) {
-//     console.log(e);
-// });
-
 pin.addEventListener('click', pinToggle);
