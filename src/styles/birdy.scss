@@ -3,11 +3,20 @@
     height: 32px;
     position: absolute;
     border-radius: 100%;
-    // top: 0;
     z-index: 5;
     background: url(/src/images/birdy.png);
     animation: fly 0.5s steps(8) infinite; 
     transition: 1.5s ease-out;
+
+    p {
+        position: absolute;
+        bottom: 35px;
+        font-size: 17px;
+        font-family: 'Popins', sans-serif;
+        color: rgb(0, 0, 0);
+        width: 200px;
+        text-align: left;
+    }
 }
 
 @keyframes fly {

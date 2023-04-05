@@ -638,6 +638,30 @@ table {
   display: none;
 }
 
+#bt {
+  background-color: #a005ae;
+}
+
+#bt:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 24px;
+  bottom: 4px;
+  background-color: white;
+  transition: 0.5s;
+  border-radius: 50%;
+}
+
+#birdy-toggle input:checked + .slide {
+  background-color: #ccc;
+}
+
+#birdy-toggle input:checked + .slide:before {
+  transform: translateX(-20px);
+}
+
 .birdy {
   width: 31px;
   height: 32px;
@@ -647,6 +671,15 @@ table {
   background: url(/src/images/birdy.png);
   animation: fly 0.5s steps(8) infinite;
   transition: 1.5s ease-out;
+}
+.birdy p {
+  position: absolute;
+  bottom: 35px;
+  font-size: 17px;
+  font-family: "Popins", sans-serif;
+  color: rgb(0, 0, 0);
+  width: 200px;
+  text-align: left;
 }
 
 @keyframes fly {

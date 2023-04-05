@@ -162,3 +162,29 @@
     color:rgb(160, 5, 174);
     display: none;
 }
+
+// Have birdy toggled on by default
+
+#bt {
+    background-color: #a005ae;
+}
+
+#bt:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 24px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.5s;
+    border-radius: 50%;
+}
+
+#birdy-toggle input:checked+.slide {
+    background-color: #ccc;
+}
+
+#birdy-toggle input:checked+.slide:before {
+    transform: translateX(-20px);
+}
