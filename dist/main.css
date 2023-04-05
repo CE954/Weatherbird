@@ -638,6 +638,25 @@ table {
   display: none;
 }
 
+.birdy {
+  width: 31px;
+  height: 32px;
+  position: absolute;
+  border-radius: 100%;
+  z-index: 5;
+  background: url(/src/images/birdy.png);
+  animation: fly 0.5s steps(8) infinite;
+  transition: 1.5s ease-out;
+}
+
+@keyframes fly {
+  0% {
+    background-position: 250px 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
 body {
   display: flex;
   justify-content: flex-start;

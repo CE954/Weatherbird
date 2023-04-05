@@ -219,3 +219,11 @@ document.addEventListener('click', function(event) {
         fetchWeather(element.id.split("-").join(" "));
     }
 })
+
+// Birdy follows cursor slowly
+const birdy = document.querySelector('.birdy');
+document.addEventListener('mousemove', function(event) {
+    let x = event.clientX;
+    let y = event.clientY;
+    birdy.style.transform = `translate(${x / 100}px, ${y / 100}px)`;
+});
