@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/CE954/JS-Project/issues"
   },
-  "homepage": "https://github.com/CE954/JS-Project#readme",
+  "homepage": "https://github.com/CE954/JS-Project",
   "dependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
