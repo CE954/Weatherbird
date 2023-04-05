@@ -4,7 +4,7 @@ import { pinToggle, checkIfEmpty, checkIfFavorited } from "./scripts/favorite.js
 import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast } from "./scripts/forecast.js";
 import { currentUnit, unitSwitch, getUnitSymbol } from "./scripts/unitSwitch.js";
 import { changePinnedUnits } from "./scripts/refreshPinned.js";
-import {birdyComments, birdyUnitChange} from "./scripts/quirkyBirdy.js";
+import {birdyWeatherComments, birdyUnitChange} from "./scripts/quirkyBirdy.js";
 
 const searchBar = document.querySelector(".search-bar");
 const moreDetails = document.querySelector(".details");
@@ -230,5 +230,3 @@ document.addEventListener('mousemove', function(event) {
     birdy.style.top = (event.pageY - 50) + 'px';
 });
 
-// Birdy says his intro when the page loads
-document.addEventListener('DOMContentLoaded', birdyIntro, {once: true});

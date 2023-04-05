@@ -5,7 +5,7 @@ const birdyComment = document.querySelector('.birdy p');
 // Birdy says his intro when the page loads
 document.addEventListener('DOMContentLoaded', birdyIntro, { once: true });
 
-export function birdyComments() {
+export function birdyWeatherComments() {
 
 }
 
@@ -41,6 +41,7 @@ geoSearch.addEventListener('mouseover', () => {
     clearBirdyComment();
 }, {once: true});
 
+// Clear out Birdy comment
 function clearBirdyComment() {
     setTimeout(() => {
         birdyComment.innerHTML = "";
@@ -62,9 +63,24 @@ pinButton.addEventListener('mouseover', () => {
 // Birdy toggle 
 let birdyToggle = document.querySelector('#birdy-toggle');
 birdyToggle.addEventListener('change', function() {
-    if (birdy.style.display === "none") {
-        birdy.style.display = "block";
+    // if (birdy.style.display === "none") {
+    //     birdy.style.display = "block";
+    // } else {
+    //     birdy.style.display = "none";
+    // }
+    if (birdy) {
+       birdy.firstChild.remove();
+       birdy.remove()
     } else {
-        birdy.style.display = "none";
+        let newBirdy = document.createElement("div");
+        newBirdy.classList.add("birdy");
+        let comment = document.createElement("p")
+        newBirdy.appendChild(comment);
+        document.body.appendChild(newBirdy);
     }
 });
+
+birdyToggle.addEventListener('mouseover', () => {
+    birdyComment.innerHTML = "If you don't like me, you can turn me off!";
+    clearBirdyComment();
+}, {once: true});
