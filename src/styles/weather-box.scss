@@ -209,15 +209,15 @@
 
 .pin:hover {
     cursor: pointer;
-    background-image: url('/src/images/filled-star.svg');
+    background-image: url('../src/images/filled-star.svg');
 }
 
 .pinned {
-    background-image: url('/src/images/filled-star.svg');
+    background-image: url('../src/images/filled-star.svg');
 }
 
 .unpinned {
-    background-image: url('/src/images/empty-star.svg');
+    background-image: url('../src/images/empty-star.svg');
 }
 
 .hidden-lat,

@@ -4,7 +4,7 @@
     position: absolute;
     border-radius: 100%;
     z-index: 5;
-    background: url("/src/images/birdy.png");
+    background: url("../src/images/birdy.png");
     animation: fly 0.5s steps(8) infinite; 
     transition: 1.5s ease-out;
 
