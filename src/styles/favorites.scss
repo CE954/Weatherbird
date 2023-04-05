@@ -146,17 +146,19 @@
     border-radius: 50%;
 }
 
-// .slide.units:before {
-//     content: "°F";
-//     font-size: 15px;
-//     text-align: center;
-//     font-family: 'Poppins', sans-serif;
-// }
-
 .switch input:checked+.slide {
     background-color: #a005ae;
 }
 
 .switch input:checked+.slide:before {
     transform: translateX(20px);
+}
+
+.unit-message {
+    position: absolute;
+    bottom: 1%;
+    right: 0;
+    font-size: 0.7em;
+    color:rgb(160, 5, 174);
+    display: none;
 }

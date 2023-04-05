@@ -3,6 +3,7 @@ import { openMenu } from "./scripts/burger.js";
 import { pinToggle, checkIfEmpty, checkIfFavorited } from "./scripts/favorite.js";
 import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast } from "./scripts/forecast.js";
 import { currentUnit, unitSwitch, getUnitSymbol } from "./scripts/unitSwitch.js";
+import { changePinnedUnits } from "./scripts/refreshPinned.js";
 
 const searchBar = document.querySelector(".search-bar");
 const moreDetails = document.querySelector(".details");
@@ -172,6 +173,23 @@ daysBox.addEventListener('wheel', function(event) {
 const unitToggle = document.querySelector('#unit-toggle input');
 unitToggle.addEventListener('change', unitSwitch);
 
+const unitMessage = document.querySelector('.unit-message');
+unitToggle.addEventListener('change', function() {
+    if (unitMessage.innerHTML === 'Fahrenheit') {
+        unitMessage.style.display = "block";
+        unitMessage.innerHTML = 'Celsius';
+        setTimeout(() => {
+            unitMessage.style.display = "none";}
+            , 2000)
+    } else {
+        unitMessage.innerHTML = 'Fahrenheit';
+        unitMessage.style.display = "block";
+        setTimeout(() => {
+            unitMessage.style.display = "none";
+        }, 2000)
+    }
+});
+
 // Refresh button 
 refresh.addEventListener('click', function(event) {
     event.preventDefault();
@@ -183,6 +201,7 @@ refresh.addEventListener('click', function(event) {
         return;
     } else {
         fetchWeather(document.querySelector('.location').innerText);
+        changePinnedUnits();
     }
 })
 
