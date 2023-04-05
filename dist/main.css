@@ -330,15 +330,15 @@ table {
 
 .pin:hover {
   cursor: pointer;
-  background-image: url("../../images/filled-star.svg");
+  background-image: url("../../src/images/filled-star.svg");
 }
 
 .pinned {
-  background-image: url("../../images/filled-star.svg");
+  background-image: url("../../src/images/filled-star.svg");
 }
 
 .unpinned {
-  background-image: url("../../images/empty-star.svg");
+  background-image: url("../../src/images/empty-star.svg");
 }
 
 .hidden-lat,
@@ -565,7 +565,7 @@ table {
   width: 40px;
   height: 40px;
   z-index: 2;
-  background: url("../images/burger.svg");
+  background: url("../../src/images/burger.svg");
   background-size: cover;
 }
 
@@ -668,7 +668,7 @@ table {
   position: absolute;
   border-radius: 100%;
   z-index: 5;
-  background: url("../../images/birdy.png");
+  background: url(../../src/images/birdy.png);
   animation: fly 0.5s steps(8) infinite;
   transition: 1.5s ease-out;
 }
@@ -711,7 +711,7 @@ body, html {
   position: fixed;
   height: 100%;
   width: 100%;
-  background: url("../images/PartlyCloudy.svg");
+  background: url("../src/images/PartlyCloudy.svg");
 }
 
 .links {
