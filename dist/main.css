@@ -314,7 +314,7 @@ table {
 .pin {
   background: transparent;
   border: none;
-  background-image: url("/src/images/empty-star.svg");
+  background: url("../images/empty-star.svg");
   position: absolute;
   bottom: 15px;
   right: 15px;
@@ -330,15 +330,15 @@ table {
 
 .pin:hover {
   cursor: pointer;
-  background-image: url("/src/images/filled-star.svg");
+  background-image: url("../../images/filled-star.svg");
 }
 
 .pinned {
-  background-image: url("/src/images/filled-star.svg");
+  background-image: url("../../images/filled-star.svg");
 }
 
 .unpinned {
-  background-image: url("/src/images/empty-star.svg");
+  background-image: url("../../images/empty-star.svg");
 }
 
 .hidden-lat,
