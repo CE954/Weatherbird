@@ -223,7 +223,6 @@ document.addEventListener('click', function(event) {
 // Birdy follows cursor slowly
 const birdy = document.querySelector('.birdy');
 document.addEventListener('mousemove', function(event) {
-    let x = event.clientX;
-    let y = event.clientY;
-    birdy.style.transform = `translate(${x / 100}px, ${y / 100}px)`;
+    birdy.style.left = event.pageX + 'px';
+    birdy.style.top = event.pageY + 'px';
 });
