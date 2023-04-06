@@ -56,7 +56,7 @@ body,html {
     z-index: 1;
     font-size: 7em;
     opacity: 1;
-    animation: dropIn 1.7s ease-out;
+    animation: dropIn 1.7s ease;
 }
 
 @keyframes dropIn {
@@ -64,6 +64,10 @@ body,html {
         transform: translateY(-100px);
         opacity: 0;
     }
+
+    60% { opacity: 0.5;
+    }
+
     100% {
         transform: translateY(0);
         opacity: 1;

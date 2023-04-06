@@ -10,15 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CE954/JS-Project.git"
+    "url": "git+https://github.com/CE954/Weatherbird.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CE954/JS-Project/issues"
+    "url": "https://github.com/CE954/Weatherbird/issues"
   },
-  "homepage": "https://github.com/CE954/JS-Project",
+  "homepage": "https://github.com/CE954/Weatherbird",
   "dependencies": {
     "@babel/core": "^7.21.3",
     "@babel/preset-env": "^7.20.2",
