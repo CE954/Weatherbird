@@ -1,5 +1,5 @@
 import { currentUnit } from "./unitSwitch";
-// Birdy will comment on the weather
+
 const birdy = document.querySelector('.birdy');
 const birdyComment = document.querySelector('.birdy p');
 
@@ -83,15 +83,18 @@ export function birdyIntro() {
         setTimeout(() => {
             birdyComment.innerHTML = "Just type in a location and I'll do the rest!";
             setTimeout(() => {
-                birdyComment.innerHTML = "Or, you can use your current location!";
+                birdyComment.innerHTML = "Use this format! (City, Country) or (City)";
                 setTimeout(() => {
-                    birdyComment.innerHTML = "I'll probably forget who you are because there's no cookies yet!";
+                    birdyComment.innerHTML = "Or, you can use your current location!";
                     setTimeout(() => {
-                        birdyComment.innerHTML = "But, I hope you have a good time!";
-                        clearBirdyComment();
+                        birdyComment.innerHTML = "I'll probably forget who you are because there's no cookies yet!";
+                        setTimeout(() => {
+                            birdyComment.innerHTML = "But, I hope you have a good time!";
+                            clearBirdyComment();
+                        }, 2500);
+                    }, 2500);
                 }, 2500);
             }, 2500);
-        }, 2500);
     }, 2500);
 }, 2500);
 }
@@ -126,20 +129,35 @@ pinButton.addEventListener('mouseover', () => {
 }, {once: true});
 
 let birdyToggle = document.querySelector('#birdy-toggle');
-birdyToggle.addEventListener('change', function() {
-    if (birdy) {
-       birdy.firstChild.remove();
-       birdy.remove()
-    } else {
-        let newBirdy = document.createElement("div");
-        newBirdy.classList.add("birdy");
-        let comment = document.createElement("p")
-        newBirdy.appendChild(comment);
-        document.body.appendChild(newBirdy);
-    }
-});
-
 birdyToggle.addEventListener('mouseover', () => {
     birdyComment.innerHTML = "If you don't like me, you can turn me off!";
     clearBirdyComment();
 }, {once: true});
+
+birdyToggle.addEventListener('change', function() {
+    if (birdy.style.display === 'none') {
+        birdy.style.display = 'block';
+        birdyComment.innerHTML = "I'm back!";
+        clearBirdyComment();
+        activateBirdy();
+    } else {
+        birdy.style.display = 'none';
+        clearBirdyComment();
+        deactivateBirdy();
+    }
+});
+
+document.addEventListener('DOMContentLoaded', activateBirdy, {once: true});
+
+function moveBirdy(event) {
+    birdy.style.left = (event.pageX) + 'px';
+    birdy.style.top = (event.pageY - 50) + 'px';
+}
+
+function activateBirdy () {
+    document.addEventListener('mousemove', moveBirdy);
+}
+
+function deactivateBirdy () {
+    document.removeEventListener('mousemove', moveBirdy);
+}

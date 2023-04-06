@@ -225,10 +225,3 @@ document.addEventListener('click', function(event) {
     }
 })
 
-
-const birdy = document.querySelector('.birdy');
-document.addEventListener('mousemove', function(event) {
-    birdy.style.left = (event.pageX) + 'px';
-    birdy.style.top = (event.pageY - 50) + 'px';
-});
-
