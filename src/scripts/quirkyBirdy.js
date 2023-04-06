@@ -124,13 +124,30 @@ refreshButton.addEventListener('mouseover', () => {
 
 let pinButton = document.querySelector('.pin');
 pinButton.addEventListener('mouseover', () => {
-    birdyComment.innerHTML = "Click here to pin or unpin the location!";
-    clearBirdyComment();
+    birdyComment.innerHTML = "Click here to pin or unpin the location!"
+    setTimeout(() => {
+        birdyComment.innerHTML = "If you have too many pins you can scroll through them!";
+        setTimeout(()=> {
+            clearBirdyComment();
+        }, 2500);
+    }, 2500);
 }, {once: true});
 
 let birdyToggle = document.querySelector('#birdy-toggle');
 birdyToggle.addEventListener('mouseover', () => {
     birdyComment.innerHTML = "If you don't like me, you can turn me off!";
+    clearBirdyComment();
+}, {once: true});
+
+let birdyScrollAdvice1 = document.querySelector('.hourly');
+birdyScrollAdvice1.addEventListener('mouseover', () => {
+    birdyComment.innerHTML = "Hover over the hours and scroll to see the forecast!";
+    clearBirdyComment();
+}, {once: true});
+
+let birdyScrollAdvice2 = document.querySelector('.daily');
+birdyScrollAdvice2.addEventListener('mouseover', () => {
+    birdyComment.innerHTML = "Hover over the days and scroll to see the forecast!";
     clearBirdyComment();
 }, {once: true});
 
