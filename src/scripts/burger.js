@@ -1,4 +1,3 @@
-// open and close the favorites/burger menu
 const favorite = document.querySelector('.favorites-menu');
 const burger = document.querySelector('.burger');
 

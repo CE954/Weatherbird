@@ -1,5 +1,4 @@
-// Pin/favorite locations
-// Grab innerHTML of the current location and store it in an array
+
 
 export const favorites = []; 
 const pin = document.querySelector('.pin');
@@ -23,7 +22,6 @@ export function pinToggle() {
     }
  }
 
- // Function to check if a location is already pinned
 export function checkIfFavorited(location) { 
     for(let i = 0; i < favorites.length; i++) {
         if (favorites[i][0] === location) {
@@ -33,7 +31,6 @@ export function checkIfFavorited(location) {
     return false;
 }
 
-// Function to splice the location from the favorites array
 export function removeFromFavorites(location) {
     for(let i = 0; i < favorites.length; i++) {
         if (favorites[i][0] === location) {
@@ -44,7 +41,6 @@ export function removeFromFavorites(location) {
     }
 }
 
-// Add a function to display the pinned locations
 export function displayPinnedLocations() { 
     for (let i = 0; i < favorites.length; i++) {
         let className = favorites[i][0].split(" ").join("-");
@@ -62,22 +58,18 @@ export function displayPinnedLocations() {
     }
 }
 
-//testing
 window.displayPinnedLocations = displayPinnedLocations;
 window.favorites = favorites;
 
-// Add a function to remove the sidebar of locations
 export function removeFromSidebar(location) {
     let className = location.split(" ").join("-");
     let toBeRemoved = document.querySelector(`.${className}`);
-    // console.log(toBeRemoved);
     while (toBeRemoved.firstChild) {
         toBeRemoved.removeChild(toBeRemoved.firstChild);
     }
     toBeRemoved.remove();
 }
 
-// check if favorites box is empty and display a message
 const emptyMessage = document.querySelector('.empty-message');
 
 export function checkIfEmpty() {
@@ -88,6 +80,4 @@ export function checkIfEmpty() {
     }
 }
 
- // Add a separate funciton to refresh the pinned locations (API call)
 
- // Function to click on location from pinned locations

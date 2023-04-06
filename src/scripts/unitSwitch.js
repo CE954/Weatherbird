@@ -1,5 +1,3 @@
-// function to switch between farenheit and celsius
-
 const units = ["imperial", "metric"];
 let currentUnit = units[0];
 

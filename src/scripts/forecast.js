@@ -1,4 +1,3 @@
-// Function to get 5 day forecast data
 import { getDayIcon, getNightIcon } from './icon.js';
 import {currentUnit, getUnitSymbol} from './unitSwitch.js';
 
@@ -49,7 +48,6 @@ export function displayHourlyForecast(data) {
     }
 }
 
-// Convert from military time to standard time
 
 function timeConversion(hours) {
     if (hours > 12) {
@@ -106,4 +104,12 @@ export function capitalize(string) {
     let str = string.split(" ");
     let newSent = str.map(word => word.charAt(0).toUpperCase() + word.slice(1));
     return newSent.join(" ");
+}
+
+export function windUnit() {
+    if (currentUnit === 'imperial') {
+        return 'MPH';
+    } else {
+        return 'M/S';
+    }
 }

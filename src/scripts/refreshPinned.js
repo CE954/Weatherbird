@@ -1,4 +1,3 @@
-// Function to change the units on the pinned locations
 import {getUnitSymbol} from './unitSwitch.js';
 
 export function changePinnedUnits() {

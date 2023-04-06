@@ -1,7 +1,7 @@
-import { getDayIcon, getNightIcon, scene } from "./scripts/icon.js";
+import { getDayIcon, getNightIcon, getDayBackground, getNightBackground } from "./scripts/icon.js";
 import { openMenu } from "./scripts/burger.js";
 import { pinToggle, checkIfEmpty, checkIfFavorited } from "./scripts/favorite.js";
-import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast } from "./scripts/forecast.js";
+import { key, getForecast, deleteForecast, capitalize, deleteHourlyForecast, windUnit } from "./scripts/forecast.js";
 import { currentUnit, unitSwitch, getUnitSymbol } from "./scripts/unitSwitch.js";
 import { changePinnedUnits } from "./scripts/refreshPinned.js";
 import {birdyWeatherComments, birdyUnitChange} from "./scripts/quirkyBirdy.js";
@@ -16,10 +16,9 @@ const loader = document.querySelector(".loader");
 const pin = document.querySelector(".pin");
 const refresh = document.querySelector('.refresh');
 
-// Display the empty favorites message on startup
+
 checkIfEmpty();
 
-// API calls
 function fetchWeather(city) {
     refresh.style.display = "none";
     loader.style.display = "block";
@@ -45,6 +44,9 @@ function fetchWeather(city) {
             refresh.style.display = "block";
             pin.classList.add('fadeIn');
             getForecast(data.coord.lat, data.coord.lon);
+            setTimeout(() => {
+                birdyWeatherComments();
+            }, 2500);
         } else {
            searchBar.classList.add('shake');
            searchBar.style.border = '1px solid #cc0505';
@@ -64,12 +66,14 @@ function displayWeather(data) {
     document.querySelector(".temp").innerText = Math.round(temp) + `${getUnitSymbol()}`;
     document.querySelector(".description").innerText = capitalize(description);
     document.querySelector(".humidity").innerText = `Humidity: ${humidity}%`;
-    document.querySelector(".wind").innerText = `Wind Speed: ${speed} MPH`;
+    document.querySelector(".wind").innerText = `Wind Speed: ${speed} ${windUnit()}`;
     if (icon.includes("d")) {
         picture.src = getDayIcon(icon);
+        getDayBackground(icon);
         picture.style.display = "block"
     } else {
         picture.src = getNightIcon(icon);
+        getNightBackground(icon);
         picture.style.display = "block"
     }
 
@@ -86,7 +90,6 @@ function displayWeather(data) {
 window.fetchWeather = fetchWeather;
 window.displayWeather = displayWeather;
 
-// Search button event listener
 searchForm.addEventListener("submit", function(event) {
     event.preventDefault();
     let input = document.querySelector(".search-bar").value;
@@ -97,7 +100,6 @@ searchForm.addEventListener("submit", function(event) {
 })
 
 
-// Geolocation
 const options = {
     enableHighAccuracy: true,
     timeout: 5000,
@@ -140,7 +142,7 @@ geoSearch.addEventListener('click', function(event) {
     navigator.geolocation.getCurrentPosition(success, error, options);
 });
 
-// Scroll to details
+
 let detailsButton = document.querySelector('.details-button');
 
 detailsButton.addEventListener('click', function(event) {
@@ -148,15 +150,15 @@ detailsButton.addEventListener('click', function(event) {
     document.querySelector('.details').scrollIntoView({behavior: 'smooth', block: 'center'});
 })
 
-// Burger toggle
+
 const burger = document.querySelector('.burger');
 burger.addEventListener('click', openMenu);
 
-// Pin locations
+
 pin.addEventListener('click', pinToggle);
 pin.addEventListener('click', checkIfEmpty);
 
-// Horizontal scroll for hourly and daily forecast
+
 const hoursBox = document.querySelector('.hours');
 const daysBox = document.querySelector('.days');
 
@@ -170,7 +172,7 @@ daysBox.addEventListener('wheel', function(event) {
     daysBox.scrollLeft += event.deltaY;
 });
 
-// Unit toggle
+
 const unitToggle = document.querySelector('#unit-toggle input');
 unitToggle.addEventListener('change', unitSwitch);
 
@@ -193,7 +195,7 @@ unitToggle.addEventListener('change', function() {
 
 unitToggle.addEventListener('change', birdyUnitChange, {once: true});
 
-// Refresh button 
+
 refresh.addEventListener('click', function(event) {
     event.preventDefault();
     if (document.querySelector('.location').innerText === "") {
@@ -208,7 +210,7 @@ refresh.addEventListener('click', function(event) {
     }
 })
 
-// Click on pinned location to fetch weather
+
 document.addEventListener('click', function(event) {
     let element = event.target;
     if (element.classList.contains('pinned-location_name')) {
@@ -223,7 +225,7 @@ document.addEventListener('click', function(event) {
     }
 })
 
-// Birdy follows cursor slowly
+
 const birdy = document.querySelector('.birdy');
 document.addEventListener('mousemove', function(event) {
     birdy.style.left = (event.pageX) + 'px';

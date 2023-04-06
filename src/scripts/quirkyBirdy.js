@@ -1,12 +1,79 @@
+import { currentUnit } from "./unitSwitch";
 // Birdy will comment on the weather
 const birdy = document.querySelector('.birdy');
 const birdyComment = document.querySelector('.birdy p');
 
-// Birdy says his intro when the page loads
 document.addEventListener('DOMContentLoaded', birdyIntro, { once: true });
 
 export function birdyWeatherComments() {
+    let location = document.querySelector('.location');
+    let desc = document.querySelector('.description');
+    let windSpeed = document.querySelector('.wind');
 
+    let time = document.querySelector('.hour div:first-child')
+    if (currentUnit === 'imperial' && (windSpeed.innerText.split(" ")[2]) > 20) {
+        windSpeed = 'windy'
+    } else if (currentUnit === 'metric' && parseInt(windSpeed.innerText.split(" ")[2]) > 9) {
+        windSpeed = 'windy'
+    } else {
+        windSpeed = 'not windy'
+    };
+
+    let tempComment = birdyTempComments();
+    let descComment = uncapitalize(desc.textContent)
+    let timeComment = time.textContent.includes('pm') ? 'evening' : 'morning';
+
+    birdyComment.textContent = `It's ${tempComment} in ${location.textContent} this ${timeComment}!`; 
+    setTimeout(() => {
+        birdyComment.textContent = `We've got ${descComment} and it's ${windSpeed}!`;
+        if (windSpeed === 'windy') {
+            setTimeout(() => {
+                birdyComment.textContent = "I'd bring a jacket!"
+                clearBirdyComment();
+            }, 2500);
+        } else {
+            clearBirdyComment();
+        }
+    }, 2500);
+}
+
+function birdyTempComments() {
+    let tempDiv = document.querySelector('.temp');
+    let temp = parseInt(tempDiv.textContent.split('°')[0]);
+    
+    if (currentUnit === 'imperial') {
+        switch(true) {
+            case temp <= 32:
+                return 'cold as $#!#';
+            case temp > 32 && temp <= 50:
+                return 'chilly';
+            case temp > 50 && temp <= 70:
+                return 'cool'; 
+            case temp > 70 && temp <= 90:
+                return 'hot';
+            case temp > 90:
+                return 'hot as !$!#';
+        }
+    } else { 
+        switch (true) {
+            case temp <= 0:
+                return 'cold as $#!#';
+            case temp > 0 && temp <= 10:
+                return 'chilly';
+            case temp > 10 && temp <= 20:
+                return 'cool';
+            case temp > 20 && temp <= 32:
+                return 'hot';
+            case temp >= 40:
+                return 'hot as !$!#';
+        }
+    }
+}
+
+function uncapitalize(string) {
+    let str = string.split(" ");
+    let newSent = str.map(word => word.charAt(0).toLowerCase() + word.slice(1));
+    return newSent.join(" ");
 }
 
 export function birdyIntro() {
@@ -34,14 +101,12 @@ export function birdyUnitChange() {
     clearBirdyComment();
 }
 
-// Birdy gives some tips when hovering over certain elements
 let geoSearch = document.querySelector('#geo-search');
 geoSearch.addEventListener('mouseover', () => {
     birdyComment.innerHTML = "Click here to use your current location!";
     clearBirdyComment();
 }, {once: true});
 
-// Clear out Birdy comment
 function clearBirdyComment() {
     setTimeout(() => {
         birdyComment.innerHTML = "";
@@ -60,14 +125,8 @@ pinButton.addEventListener('mouseover', () => {
     clearBirdyComment();
 }, {once: true});
 
-// Birdy toggle 
 let birdyToggle = document.querySelector('#birdy-toggle');
 birdyToggle.addEventListener('change', function() {
-    // if (birdy.style.display === "none") {
-    //     birdy.style.display = "block";
-    // } else {
-    //     birdy.style.display = "none";
-    // }
     if (birdy) {
        birdy.firstChild.remove();
        birdy.remove()

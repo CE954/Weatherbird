@@ -25,7 +25,8 @@ body,html {
     position: fixed;
     height: 100%;
     width: 100%;
-    background: url("../src/images/PartlyCloudy.svg");
+    background: url("../src/images/ScatteredClouds.svg");
+    transition: 2s fadeIn ease-out;
 }
 
 .links {
@@ -46,4 +47,25 @@ body,html {
 
 .links a:hover {
     color: rgb(160, 5, 174)
+}
+
+.title {
+    position: absolute;
+    top: 0%;
+    font-family: "wendy", sans-serif;
+    z-index: 1;
+    font-size: 7em;
+    opacity: 1;
+    animation: dropIn 1.7s ease-out;
+}
+
+@keyframes dropIn {
+    0% {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
