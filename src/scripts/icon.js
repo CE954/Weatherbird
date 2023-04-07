@@ -57,22 +57,31 @@ export function getDayBackground(icon) {
     switch (icon) {
         case "01d":
             scene.style.background = "url(./src/images/ClearSky.svg)";
+            break;
         case "02d":
             scene.style.background = "url(./src/images/FewClouds.svg)";
+            break;
         case "03d":
             scene.style.background = "url(./src/images/ScatteredClouds.svg)";
+            break;
         case "04d":
-            scene.style.background = "url(./src/images/BrokenClouds.svg)";
+            scene.style.background = "url(./src/images/BrokenClouds.svg)"; 
+            break;
         case "09d":
             scene.style.background = "url(./src/images/RainDay.svg)";
+            break;
         case "10d":
             scene.style.background = "url(./src/images/RainDay.svg)";
+            break;
         case "11d":
             scene.style.background = "url(./src/images/Thunderstorm.svg)";
+            break;
         case "13d":
             scene.style.background = "url(./src/images/SnowDay.svg)";
+            break;
         case "50d":
             scene.style.background = "url(./src/images/BrokenClouds.svg)";
+            break;
     }
 }
 
@@ -84,22 +93,31 @@ export function getNightBackground(icon) {
     switch (icon) {
         case "01n":
             scene.style.background = "url(./src/images/ClearNightSky.svg)";
+            break;
         case "02n":
             scene.style.background = "url(./src/images/FewCloudsNight.svg)";
+            break;
         case "03n":
             scene.style.background = "url(./src/images/ScatteredCloudsNight.svg)";
+            break;
         case "04n":
             scene.style.background = "url(./src/images/BrokenCloudsNight.svg)";
+            break;
         case "09n":
             scene.style.background = "url(./src/images/RainNight.svg)";
+            break;
         case "10n":
             scene.style.background = "url(./src/images/RainNight.svg)";
+            break;
         case "11n":
             scene.style.background = "url(./src/images/Thunderstorm.svg)";
+            break;
         case "13n":
             scene.style.background = "url(./src/images/SnowNight.svg)";
+            break;
         case "50n":
             scene.style.background = "url(./src/images/BrokenCloudsNight.svg)";
+            break;
     }
 }
 
