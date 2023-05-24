@@ -26,7 +26,7 @@ and unique user experience than most other weather applications. Thus, came
 the idea for Weatherbird. 
 
 ## Key Features <a name="keyfeatures"></a>
-- Search by city: may also specify the country
+- Search by city: may include state and country (Ex: San Francisco, CA, US)
 - Geolocation
 - Pin locations
 - Toggle between metric and imperial units
