@@ -83,7 +83,7 @@ export function birdyIntro() {
         setTimeout(() => {
             birdyComment.innerHTML = "Just type in a location and I'll do the rest!";
             setTimeout(() => {
-                birdyComment.innerHTML = "Use this format! (City, Country) or (City)";
+                birdyComment.innerHTML = "Use this format! (City, State, Country)";
                 setTimeout(() => {
                     birdyComment.innerHTML = "Or, you can use your current location!";
                     setTimeout(() => {

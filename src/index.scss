@@ -46,7 +46,8 @@ body,html {
     transition: 0.5s;
 }
 
-.links a:hover {
+.links a:hover, .help:hover {
+    cursor: pointer;
     color: rgb(160, 5, 174)
 }
 
@@ -58,6 +59,88 @@ body,html {
     font-size: 7em;
     opacity: 1;
     animation: dropIn 1.7s ease;
+}
+
+.help {
+    color: #ffff;
+    position: fixed;
+    top: 1%;
+    left: 55px;
+    font-size: 50px;
+    transition: 0.5s;
+}
+
+.help-module {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+    height: 30em;
+    position: fixed;
+    background: white;
+    width: 25em;
+    z-index: 5;
+    top: 50%;
+    left: 50%;
+    border-radius: 2em;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h1 {
+        font-size: 1.5em;
+        margin-top: 0.8em;
+        margin-bottom: 0.3em;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+.q1, .q2 {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 1em 2em;
+
+    p:first-child {
+        margin-bottom: 0.5em;
+        color: #a005ae;
+    }
+
+    p:last-child {
+        line-height: 2em;
+    }
+}
+
+.close-help {
+    position: absolute;
+    left: 5%;
+    top: 3%;
+    color: #a005ae;
+    font-size: 1.7em;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+strong {
+    font-weight: bolder;
+}
+
+p > span {
+    text-decoration: underline;
+}
+
+.help-background {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.3s linear, opacity 0.3s linear;
+    position: fixed;
+    z-index: 4;
+    height: 100vh;
+    width: 100vw;
+    background: rgb(0 0 0 / 77%);
 }
 
 @keyframes dropIn {
@@ -81,7 +164,7 @@ body,html {
         right: 0;
     }
 
-    .links a {
+    .links a, .help {
         margin-right: 0.4em;
         font-size: 2em;
     }
@@ -114,5 +197,9 @@ body,html {
 
     .title {
         top: 3%;
+    }
+
+    .help-module {
+        font-size: 0.9em;
     }
 }

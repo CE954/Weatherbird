@@ -225,3 +225,27 @@ document.addEventListener('click', function(event) {
     }
 })
 
+function toggleHelpModule() {
+    let helpModule = document.querySelector('.help-module');
+    let helpBackground = document.querySelector('.help-background');
+    if (helpModule.style.visibility=== 'visible') {
+        helpModule.style.visibility= 'hidden';
+        helpModule.style.opacity = '0';
+    } else {
+        helpModule.style.visibility= 'visible';
+        helpModule.style.opacity = '1';
+    }
+
+    if (helpBackground.style.visibility=== 'visible') {
+        helpBackground.style.visibility= 'hidden';
+        helpBackground.style.opacity = '0';
+    } else {
+        helpBackground.style.visibility= 'visible';
+        helpBackground.style.opacity = '1';
+    }
+}
+
+let helpButton = document.querySelector('.help');
+helpButton.addEventListener('click', toggleHelpModule);
+let closeHelpButton = document.querySelector('.close-help');
+closeHelpButton.addEventListener('click', toggleHelpModule);
